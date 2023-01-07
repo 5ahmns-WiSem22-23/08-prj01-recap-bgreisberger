@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject item;
 
+    public static int itemCount;
+
     void Start()
     {
         //Spawn bei Start
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnItem()
     {
-        //durch random range wird Item random gespawnt
+        //durch random range wird bei spawnen von Item die Item-Position random 
         Instantiate(item, new Vector3(Random.Range(minRange, maxRange), Random.Range(minRange, maxRange), 0), Quaternion.identity);
     }
 }

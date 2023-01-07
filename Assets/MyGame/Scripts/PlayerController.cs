@@ -2,19 +2,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
-     Rigidbody2D ridbod;
-
     [SerializeField]
     GameManager gameman;
 
     [SerializeField]
+    Sprite baseSprite;
+
+    [SerializeField]
+    Sprite carryingSprite;
+
+    [SerializeField]
     float speed;
 
+    Rigidbody2D ridbod;
+    SpriteRenderer spiRen;
+    bool carriesItem;
 
     void Start()
     {
         ridbod = GetComponent<Rigidbody2D>();
+        spiRen = GetComponent<SpriteRenderer>();
+
+        spiRen.sprite = baseSprite;
     }
   
 
@@ -29,12 +38,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Bei Collision mit Item wird altes Item zerstört und neues gespawnt
+        //Bei Collision mit Item wird altes Item zerstört
         if (collision.CompareTag("Item"))
         {
-            gameman.SpawnItem();
+            spiRen.sprite = carryingSprite;
             Destroy(collision.gameObject);
-
+            carriesItem = true;
+        }
+        //Bei Collision mit Target wird ein neues Item gespawnt, wenn der Player ein Item mit sich trägt
+        else if (collision.CompareTag("Target") && carriesItem)
+        {
+            spiRen.sprite = baseSprite;
+            gameman.SpawnItem();
+            GameManager.itemCount++;
+            carriesItem = false;
         }
     }
 }
