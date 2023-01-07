@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Der Timer und der Score sollen jeden Frame angezeigt werden
-        timeDisplay.text = Mathf.Round(maxTime - time).ToString() + " sec. left"; ;
+        timeDisplay.text = Mathf.Round(maxTime - time).ToString() + " sec. übrig"; ;
         itemCountDisplay.text = "Score: " + itemCount.ToString();
     }
 
