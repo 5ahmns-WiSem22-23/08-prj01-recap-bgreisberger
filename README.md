@@ -11,7 +11,7 @@ Collision, Trigger
 ### Entwicklungsplattform: 
 MacOS, Unity 2020.3.18f1, Visual Studio 2019
 
-### work steps:
+### Arbeitsschritte:
 - Github Repository erstellen
 - Repository clonen
 - Szene whiteboxen
